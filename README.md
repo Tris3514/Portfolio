@@ -45,3 +45,5 @@ Visit the live portfolio at: [https://trisgiles.dev](https://trisgiles.dev)
 ---
 
 *Built with modern web technologies and optimized for performance.*
+
+Last updated: January 2025
