@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - gh-pages # Set a branch to deploy from
+      - main # Set a branch to deploy from
   workflow_dispatch:
 
 jobs:
