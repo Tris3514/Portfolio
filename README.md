@@ -34,9 +34,9 @@ Visit the live portfolio at: [https://trisgiles.dev](https://trisgiles.dev)
 
 ## Contact
 
-- **Email**: tris.giles@example.com
-- **Phone**: +1 (555) 123-4567
-- **Location**: Creative Studio, CA
+- **Email**: tristiancgiles@gmail.com
+- **Phone**: +356 7930 3214
+- **Location**: Attard, Malta
 
 ## License
 

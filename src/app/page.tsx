@@ -57,11 +57,15 @@ export default function Home() {
                 <Button variant="ghost" size="icon" className="rounded-full">
                   <Github className="h-5 w-5" />
                 </Button>
-                <Button variant="ghost" size="icon" className="rounded-full">
-                  <Linkedin className="h-5 w-5" />
+                <Button variant="ghost" size="icon" className="rounded-full" asChild>
+                  <a href="https://www.linkedin.com/in/tristian-giles-83a68337b" target="_blank" rel="noopener noreferrer">
+                    <Linkedin className="h-5 w-5" />
+                  </a>
                 </Button>
-                <Button variant="ghost" size="icon" className="rounded-full">
-                  <Mail className="h-5 w-5" />
+                <Button variant="ghost" size="icon" className="rounded-full" asChild>
+                  <a href="mailto:tristiancgiles@gmail.com">
+                    <Mail className="h-5 w-5" />
+                  </a>
                 </Button>
               </div>
               <div className="flex flex-col items-center">
@@ -441,8 +445,8 @@ export default function Home() {
                           <div>
                             <h3 className="font-semibold mb-1">Email</h3>
                             <p className="text-muted-foreground mb-2">Send me an email anytime</p>
-                            <a href="mailto:tris.giles@example.com" className="text-primary hover:text-primary/80 transition-colors">
-                              tris.giles@example.com
+                            <a href="mailto:tristiancgiles@gmail.com" className="text-primary hover:text-primary/80 transition-colors">
+                              tristiancgiles@gmail.com
                             </a>
                           </div>
                         </div>
@@ -457,8 +461,8 @@ export default function Home() {
                           <div>
                             <h3 className="font-semibold mb-1">Phone</h3>
                             <p className="text-muted-foreground mb-2">Mon-Fri from 9am to 6pm</p>
-                            <a href="tel:+15551234567" className="text-primary hover:text-primary/80 transition-colors">
-                              +1 (555) 123-4567
+                            <a href="tel:+35679303214" className="text-primary hover:text-primary/80 transition-colors">
+                              +356 7930 3214
                             </a>
                           </div>
                         </div>
@@ -474,7 +478,7 @@ export default function Home() {
                             <h3 className="font-semibold mb-1">Location</h3>
                             <p className="text-muted-foreground mb-2">Available for remote work</p>
                             <a href="#" className="text-primary hover:text-primary/80 transition-colors">
-                              Creative Studio, CA
+                              Attard, Malta
           </a>
         </div>
                         </div>
@@ -513,12 +517,12 @@ export default function Home() {
                   </a>
                 </Button>
                 <Button variant="ghost" size="icon" asChild>
-                  <a href="https://linkedin.com/in/johndoe" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.linkedin.com/in/tristian-giles-83a68337b" target="_blank" rel="noopener noreferrer">
                     <Linkedin className="h-5 w-5" />
                   </a>
                 </Button>
                 <Button variant="ghost" size="icon" asChild>
-                  <a href="mailto:john.doe@example.com">
+                  <a href="mailto:tristiancgiles@gmail.com">
                     <Mail className="h-5 w-5" />
                   </a>
                 </Button>
@@ -580,9 +584,9 @@ export default function Home() {
             <div>
               <h3 className="font-semibold mb-4">Get In Touch</h3>
               <div className="space-y-2 text-muted-foreground">
-                <p>tris.giles@example.com</p>
-                <p>+1 (555) 123-4567</p>
-                <p>Creative Studio, CA</p>
+                <p>tristiancgiles@gmail.com</p>
+                <p>+356 7930 3214</p>
+                <p>Attard, Malta</p>
               </div>
             </div>
           </div>
