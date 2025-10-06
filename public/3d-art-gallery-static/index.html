@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Art Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: oklch(0.98 0.02 300);
+            color: oklch(0.15 0.05 300);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        header {
+            border-bottom: 1px solid oklch(0.9 0.05 300);
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid oklch(0.9 0.05 300);
+            color: oklch(0.15 0.05 300);
+            text-decoration: none;
+            border-radius: 0.375rem;
+            transition: all 0.2s;
+        }
+        
+        .back-btn:hover {
+            background: oklch(0.95 0.05 300);
+        }
+        
+        .header-text {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .header-text h1 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header-text p {
+            color: oklch(0.5 0.05 300);
+        }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            background: oklch(0.95 0.05 300);
+            border: 1px solid oklch(0.9 0.05 300);
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            color: oklch(0.5 0.05 300);
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+        }
+        
+        .section-header {
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-header h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-header p {
+            color: oklch(0.5 0.05 300);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+        
+        .art-card {
+            background: oklch(0.99 0.01 300);
+            border: 1px solid oklch(0.9 0.05 300);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .art-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: oklch(0.6 0.15 280);
+        }
+        
+        .art-container {
+            aspect-ratio: 1;
+            background: oklch(0.95 0.05 300);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .art-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .art-name {
+            font-size: 0.75rem;
+            color: oklch(0.5 0.05 300);
+            word-break: break-word;
+        }
+        
+        footer {
+            border-top: 1px solid oklch(0.9 0.05 300);
+            padding: 2rem 0;
+            text-align: center;
+            color: oklch(0.5 0.05 300);
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/Portfolio/" class="back-btn">
+                    ← Back to Portfolio
+                </a>
+                <div class="header-text">
+                    <h1>3D Art Gallery</h1>
+                    <p>3D models, renders, and digital sculptures</p>
+                </div>
+                <div class="badge">
+                    <span id="artCount">0</span> Artworks
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <p style="text-align: center; margin-bottom: 3rem; font-size: 1.125rem; color: oklch(0.5 0.05 300); max-width: 48rem; margin-left: auto; margin-right: auto;">
+                Explore a collection of 3D artwork, including character models, environmental designs, and digital sculptures.
+            </p>
+
+            <!-- Character Models Section -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Character Models</h2>
+                    <p>3D character designs and models for games and animation</p>
+                </div>
+                <div id="characterGrid" class="gallery-grid">
+                    <!-- Character models will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Environmental Art Section -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Environmental Art</h2>
+                    <p>3D environments, landscapes, and architectural designs</p>
+                </div>
+                <div id="environmentGrid" class="gallery-grid">
+                    <!-- Environmental art will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Product Visualization Section -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Product Visualization</h2>
+                    <p>3D product renders and commercial visualization work</p>
+                </div>
+                <div id="productGrid" class="gallery-grid">
+                    <!-- Product visualizations will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Digital Sculptures Section -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Digital Sculptures</h2>
+                    <p>Creative 3D sculptures and artistic expressions</p>
+                </div>
+                <div id="sculptureGrid" class="gallery-grid">
+                    <!-- Digital sculptures will be loaded here -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Tris Giles. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Sample 3D art data - you can replace these with actual artwork
+        const artData = {
+            character: [
+                { name: "Warrior Character", file: "warrior-character.jpg" },
+                { name: "Fantasy Mage", file: "fantasy-mage.jpg" },
+                { name: "Sci-Fi Soldier", file: "scifi-soldier.jpg" },
+                { name: "Medieval Knight", file: "medieval-knight.jpg" },
+                { name: "Cyberpunk Hero", file: "cyberpunk-hero.jpg" },
+                { name: "Steampunk Inventor", file: "steampunk-inventor.jpg" }
+            ],
+            environment: [
+                { name: "Fantasy Forest", file: "fantasy-forest.jpg" },
+                { name: "Sci-Fi City", file: "scifi-city.jpg" },
+                { name: "Medieval Castle", file: "medieval-castle.jpg" },
+                { name: "Underwater Temple", file: "underwater-temple.jpg" },
+                { name: "Space Station", file: "space-station.jpg" },
+                { name: "Mountain Peak", file: "mountain-peak.jpg" }
+            ],
+            product: [
+                { name: "Luxury Watch", file: "luxury-watch.jpg" },
+                { name: "Gaming Headset", file: "gaming-headset.jpg" },
+                { name: "Smartphone", file: "smartphone.jpg" },
+                { name: "Sports Car", file: "sports-car.jpg" },
+                { name: "Furniture Set", file: "furniture-set.jpg" },
+                { name: "Jewelry Piece", file: "jewelry-piece.jpg" }
+            ],
+            sculpture: [
+                { name: "Abstract Form", file: "abstract-form.jpg" },
+                { name: "Organic Growth", file: "organic-growth.jpg" },
+                { name: "Geometric Study", file: "geometric-study.jpg" },
+                { name: "Fluid Motion", file: "fluid-motion.jpg" },
+                { name: "Crystal Formation", file: "crystal-formation.jpg" },
+                { name: "Digital Nature", file: "digital-nature.jpg" }
+            ]
+        };
+
+        const artCountSpan = document.getElementById('artCount');
+        let totalArtworks = 0;
+
+        function createArtCard(category, artwork) {
+            const card = document.createElement('div');
+            card.className = 'art-card';
+            
+            card.innerHTML = `
+                <div class="art-container">
+                    <img src="/Portfolio/3d-art-gallery/${artwork.file}" alt="${artwork.name}" loading="lazy" 
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div style="display: none; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: oklch(0.5 0.05 300);">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎨</div>
+                        <div style="font-size: 0.75rem; text-align: center;">${artwork.name}</div>
+                    </div>
+                </div>
+                <div class="art-name">${artwork.name}</div>
+            `;
+            
+            return card;
+        }
+
+        // Load artworks for each category
+        for (const category in artData) {
+            const grid = document.getElementById(`${category}Grid`);
+            artData[category].forEach(artwork => {
+                grid.appendChild(createArtCard(category, artwork));
+                totalArtworks++;
+            });
+        }
+        
+        artCountSpan.textContent = totalArtworks.toString();
+    </script>
+</body>
+</html>

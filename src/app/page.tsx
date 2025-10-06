@@ -189,7 +189,7 @@ export default function Home() {
                   Here are some of my recent projects that showcase my skills and passion for creating exceptional digital experiences.
                 </p>
               </div>
-              <div className="grid lg:grid-cols-2 gap-8 mb-16">
+              <div className="grid lg:grid-cols-2 xl:grid-cols-4 gap-8 mb-16">
                 <Card className="group hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full">
                   <div className="aspect-video bg-muted relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
@@ -304,6 +304,49 @@ export default function Home() {
                       <div className="flex space-x-2 mt-auto">
                         <Button variant="outline" className="flex-1" asChild>
                           <a href="/Portfolio/website-templates">
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            View Gallery
+                          </a>
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </div>
+                </Card>
+
+                {/* Project 4: 3D Art */}
+                <Card className="group hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full">
+                  <div className="aspect-video bg-muted relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                      <span className="text-muted-foreground">Project Image</span>
+                    </div>
+                    <div className="absolute top-4 right-4 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <Button size="sm" variant="secondary" className="rounded-full">
+                        <ExternalLink className="w-4 h-4" />
+                      </Button>
+                      <Button size="sm" variant="secondary" className="rounded-full">
+                        <Github className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="flex flex-col flex-grow">
+                    <CardHeader>
+                      <CardTitle>3D Art</CardTitle>
+                      <CardDescription>
+                        A collection of 3D artwork including character models, environmental designs, product visualizations, and digital sculptures.
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="flex flex-col flex-grow">
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        <Badge variant="secondary">Blender</Badge>
+                        <Badge variant="secondary">Maya</Badge>
+                        <Badge variant="secondary">3D Modeling</Badge>
+                        <Badge variant="secondary">Texturing</Badge>
+                        <Badge variant="secondary">Rendering</Badge>
+                        <Badge variant="secondary">Animation</Badge>
+                      </div>
+                      <div className="flex space-x-2 mt-auto">
+                        <Button variant="outline" className="flex-1" asChild>
+                          <a href="/Portfolio/3d-art-gallery-static/">
                             <ExternalLink className="w-4 h-4 mr-2" />
                             View Gallery
                           </a>
