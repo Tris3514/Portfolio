@@ -71,7 +71,10 @@ export default function WebsiteTemplatesPage() {
                   onError={(e) => {
                     // Fallback to placeholder if image fails to load
                     e.currentTarget.style.display = 'none';
-                    e.currentTarget.nextElementSibling.style.display = 'flex';
+                    const nextElement = e.currentTarget.nextElementSibling as HTMLElement;
+                    if (nextElement) {
+                      nextElement.style.display = 'flex';
+                    }
                   }}
                 />
                 {/* Fallback placeholder */}
