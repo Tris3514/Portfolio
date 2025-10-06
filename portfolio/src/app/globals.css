@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark mode as default with lavender theme */
+    --background: 240 10% 8%;
+    --foreground: 240 10% 95%;
+    --card: 240 10% 8%;
+    --card-foreground: 240 10% 95%;
+    --popover: 240 10% 8%;
+    --popover-foreground: 240 10% 95%;
+    --primary: 270 60% 70%;
+    --primary-foreground: 240 10% 8%;
+    --secondary: 240 5% 15%;
+    --secondary-foreground: 240 10% 95%;
+    --muted: 240 5% 15%;
+    --muted-foreground: 240 5% 65%;
+    --accent: 240 5% 15%;
+    --accent-foreground: 240 10% 95%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 240 5% 20%;
+    --input: 240 5% 20%;
+    --ring: 270 60% 70%;
+    --radius: 0.5rem;
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 8%;
+    --primary: 270 60% 70%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 5% 95%;
+    --secondary-foreground: 240 10% 8%;
+    --muted: 240 5% 95%;
+    --muted-foreground: 240 5% 45%;
+    --accent: 240 5% 95%;
+    --accent-foreground: 240 10% 8%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 240 5% 90%;
+    --input: 240 5% 90%;
+    --ring: 270 60% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Helvetica", "Arial", sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Helvetica Bold", "Helvetica", "Arial", sans-serif;
+    font-weight: bold;
+  }
+}
+
+@layer utilities {
+  .diagonal-crosses {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .plus-grid-animation {
+    animation: pan-plus-grid 45s linear infinite;
+    transform: translateY(0) translateX(0);
+    width: 100%;
+    height: 100%;
+  }
+
+  @keyframes pan-plus-grid {
+    0% {
+      transform: translateY(0) translateX(0);
+    }
+    25% {
+      transform: translateY(-80px) translateX(40px);
+    }
+    50% {
+      transform: translateY(-160px) translateX(0);
+    }
+    75% {
+      transform: translateY(-80px) translateX(-40px);
+    }
+    100% {
+      transform: translateY(0) translateX(0);
+    }
+  }
+}
