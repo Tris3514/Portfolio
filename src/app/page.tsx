@@ -189,7 +189,7 @@ export default function Home() {
                   Here are some of my recent projects that showcase my skills and passion for creating exceptional digital experiences.
                 </p>
               </div>
-              <div className="grid lg:grid-cols-2 xl:grid-cols-4 gap-8 mb-16">
+              <div className="grid md:grid-cols-2 gap-8 mb-16">
                 <Card className="group hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full">
                   <div className="aspect-video bg-muted relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
