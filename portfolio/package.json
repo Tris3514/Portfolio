@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "update-gallery": "node scripts/update-gallery.js",
-    "update-igaming-gallery": "node scripts/update-igaming-gallery.js"
+    "update-igaming-gallery": "node scripts/update-igaming-gallery.js",
+    "export": "next build",
+    "deploy": "npm run update-gallery && npm run update-igaming-gallery && npm run export"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.10",
