@@ -221,7 +221,7 @@ export default function Home() {
                       </div>
                       <div className="flex space-x-2 mt-auto">
                         <Button variant="outline" className="flex-1" asChild>
-                          <a href="/gallery">
+                          <a href="/gallery-static/">
                             <ExternalLink className="w-4 h-4 mr-2" />
                             View Gallery
                           </a>
@@ -262,7 +262,7 @@ export default function Home() {
                       </div>
                       <div className="flex space-x-2 mt-auto">
                         <Button variant="outline" className="flex-1" asChild>
-                          <a href="/igaming-gallery">
+                          <a href="/igaming-gallery-static/">
                             <ExternalLink className="w-4 h-4 mr-2" />
                             View Gallery
                           </a>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iGaming Assets Gallery - Tris Giles</title>
+    <meta name="description" content="3D assets and designs for the gaming industry by Tris Giles">
+    <link rel="icon" href="/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #e4e4e7;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        header {
+            border-bottom: 1px solid #27272a;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid #27272a;
+            color: #e4e4e7;
+            text-decoration: none;
+            border-radius: 0.375rem;
+            transition: all 0.2s;
+        }
+        
+        .back-btn:hover {
+            background: #27272a;
+        }
+        
+        .header-text {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .header-text h1 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header-text p {
+            color: #a1a1aa;
+        }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            background: #27272a;
+            border: 1px solid #3f3f46;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            color: #a1a1aa;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+        }
+        
+        .section-header {
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-header h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-header p {
+            color: #a1a1aa;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+        
+        .asset-card {
+            background: #18181b;
+            border: 1px solid #27272a;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .asset-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border-color: #3f3f46;
+        }
+        
+        .asset-container {
+            aspect-ratio: 1;
+            background: #27272a;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .asset-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .asset-name {
+            font-size: 0.75rem;
+            color: #a1a1aa;
+            word-break: break-word;
+        }
+        
+        footer {
+            border-top: 1px solid #27272a;
+            padding: 2rem 0;
+            text-align: center;
+            color: #a1a1aa;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="back-btn">
+                    ← Back to Portfolio
+                </a>
+                <div class="header-text">
+                    <h1>iGaming Assets Gallery</h1>
+                    <p>3D assets and designs for the gaming industry</p>
+                </div>
+                <div class="badge">
+                    25 Assets
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Barrel Assets -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Barrel Assets</h2>
+                <p>3D barrel models and textures for gaming environments</p>
+            </div>
+            <div class="gallery-grid" id="barrel-grid">
+                <!-- Barrel assets will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Cannon Assets -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Cannon Assets</h2>
+                <p>3D cannon models and textures for gaming environments</p>
+            </div>
+            <div class="gallery-grid" id="cannon-grid">
+                <!-- Cannon assets will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Pistol Assets -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Pistol Assets</h2>
+                <p>3D pistol models and textures for gaming environments</p>
+            </div>
+            <div class="gallery-grid" id="pistol-grid">
+                <!-- Pistol assets will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Hook Assets -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Hook Symbols</h2>
+                <p>Hook symbol designs for gaming interfaces</p>
+            </div>
+            <div class="gallery-grid" id="hook-grid">
+                <!-- Hook assets will be loaded here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Tris Giles. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Asset data
+        const igamingAssets = {
+            barrel: [
+                "barrel1.png", "barrel2.png", "barrel3.png", "barrel4.png",
+                "barrel5.png", "barrel6.png", "barrel7.png", "barrel8.png"
+            ],
+            cannon: [
+                "cannon1.png", "cannon2.png", "cannon3.png", "cannon4.png",
+                "cannon5.png", "cannon6.png", "cannon7.png", "cannon8.png"
+            ],
+            pistol: [
+                "pistol1.png", "pistol2.png", "pistol3.png", "pistol4.png",
+                "pistol5.png", "pistol6.png", "pistol7.png", "pistol8.png"
+            ],
+            hook: [
+                "BF-Symbol-Hook-Full.png"
+            ]
+        };
+
+        // Function to create asset card
+        function createAssetCard(imageName, category, index) {
+            const card = document.createElement('div');
+            card.className = 'asset-card';
+            
+            const displayName = category === 'hook' ? 'Hook Symbol' : `${category.charAt(0).toUpperCase() + category.slice(1)} ${index + 1}`;
+            
+            card.innerHTML = `
+                <div class="asset-container">
+                    <img src="/igaming-gallery/${category}/${imageName}" alt="${displayName}" loading="lazy">
+                </div>
+                <div class="asset-name">${displayName}</div>
+            `;
+            
+            return card;
+        }
+
+        // Load assets for a category
+        function loadAssets(category, gridId) {
+            const grid = document.getElementById(gridId);
+            const assets = igamingAssets[category];
+            
+            assets.forEach((imageName, index) => {
+                const card = createAssetCard(imageName, category, index);
+                grid.appendChild(card);
+            });
+        }
+
+        // Initialize all galleries
+        function initializeGalleries() {
+            loadAssets('barrel', 'barrel-grid');
+            loadAssets('cannon', 'cannon-grid');
+            loadAssets('pistol', 'pistol-grid');
+            loadAssets('hook', 'hook-grid');
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', initializeGalleries);
+    </script>
+</body>
+</html>
