@@ -64,19 +64,13 @@ const IgamingGallery = () => {
     }
   };
 
-  const prevFrame = () => {
-    if (selectedItem && selectedItem.type === 'animation') {
-      setCurrentFrame((prev) => (prev - 1 + selectedItem.frames.length) % selectedItem.frames.length);
-    }
-  };
-
   // Auto-advance frames when playing
   useEffect(() => {
     if (isPlaying && selectedItem && selectedItem.type === 'animation') {
       const interval = setInterval(nextFrame, 200); // 5 FPS
       return () => clearInterval(interval);
     }
-  }, [isPlaying, selectedItem]);
+  }, [isPlaying, selectedItem, nextFrame]);
 
   if (items.length === 0) {
     return (

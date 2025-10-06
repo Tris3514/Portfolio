@@ -3,7 +3,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Code, Palette, Smartphone, Globe, CuboidIcon, Camera } from "lucide-react";
+import { Palette, Globe, CuboidIcon, Camera } from "lucide-react";
 
 const About = () => {
   const skills = [
@@ -26,7 +26,7 @@ const About = () => {
               Creative Visual Storyteller
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              I'm a passionate graphic designer and multimedia artist with a love for visual storytelling. 
+              I&apos;m a passionate graphic designer and multimedia artist with a love for visual storytelling. 
               With expertise in both traditional and digital design, I bring creative visions to life through 
               innovative design solutions and compelling multimedia experiences.
             </p>
@@ -49,7 +49,7 @@ const About = () => {
                       </p>
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         I specialize in creating compelling visual narratives through graphic design and multimedia art. 
-                        With 5+ years of experience, I've worked with brands and artists to deliver 
+                        With 5+ years of experience, I&apos;ve worked with brands and artists to deliver 
                         innovative design solutions that captivate and inspire.
                       </p>
                     </div>

@@ -13,7 +13,7 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto">
           {/* Greeting Badge */}
           <Badge variant="secondary" className="mb-6 text-sm">
-            👋 Hello, I'm
+            👋 Hello, I&apos;m
           </Badge>
 
           {/* Main Heading */}
@@ -67,7 +67,9 @@ const Hero = () => {
           {/* Scroll Indicator */}
           <div className="flex flex-col items-center">
             <span className="text-sm text-muted-foreground mb-2">Scroll to explore</span>
-            <ArrowDown className="animate-bounce text-muted-foreground" size={24} />
+            <div className="animate-bounce">
+              <ArrowDown className="w-6 h-6 text-muted-foreground" />
+            </div>
           </div>
         </div>
       </div>

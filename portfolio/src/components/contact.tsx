@@ -1,20 +1,11 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Github, 
-  Linkedin, 
-  Twitter,
-  Send,
-  MessageCircle
-} from "lucide-react";
+import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from "lucide-react";
 
 const Contact = () => {
   const contactInfo = [
@@ -72,11 +63,11 @@ const Contact = () => {
               Get In Touch
             </Badge>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-              Let's Work Together
+              Let&apos;s Work Together
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Have a project in mind or just want to chat? I'd love to hear from you. 
-              Send me a message and I'll respond as soon as possible.
+              Have a project in mind or just want to chat? I&apos;d love to hear from you. 
+              Send me a message and I&apos;ll respond as soon as possible.
             </p>
           </div>
 
@@ -84,59 +75,54 @@ const Contact = () => {
             {/* Contact Form */}
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <MessageCircle className="w-5 h-5" />
-                  <span>Send a Message</span>
-                </CardTitle>
+                <CardTitle>Send a Message</CardTitle>
+                <CardDescription>
+                  Fill out the form below and I&apos;ll get back to you within 24 hours.
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <form className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm font-medium">
-                        Name
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="firstName" className="block text-sm font-medium mb-2">
+                        First Name
                       </label>
-                      <Input 
-                        id="name" 
-                        placeholder="Your name" 
-                        required 
-                      />
+                      <Input id="firstName" placeholder="John" />
                     </div>
-                    <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm font-medium">
-                        Email
+                    <div>
+                      <label htmlFor="lastName" className="block text-sm font-medium mb-2">
+                        Last Name
                       </label>
-                      <Input 
-                        id="email" 
-                        type="email" 
-                        placeholder="your.email@example.com" 
-                        required 
-                      />
+                      <Input id="lastName" placeholder="Doe" />
                     </div>
                   </div>
-                  <div className="space-y-2">
-                    <label htmlFor="subject" className="text-sm font-medium">
+                  
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium mb-2">
+                      Email
+                    </label>
+                    <Input id="email" type="email" placeholder="john@example.com" />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="subject" className="block text-sm font-medium mb-2">
                       Subject
                     </label>
-                    <Input 
-                      id="subject" 
-                      placeholder="What's this about?" 
-                      required 
-                    />
+                    <Input id="subject" placeholder="Project Inquiry" />
                   </div>
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium">
+                  
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium mb-2">
                       Message
                     </label>
                     <Textarea 
                       id="message" 
-                      placeholder="Tell me about your project or just say hello!" 
-                      rows={6}
-                      required 
+                      placeholder="Tell me about your project..."
+                      className="min-h-[120px]"
                     />
                   </div>
-                  <Button type="submit" className="w-full" size="lg">
-                    <Send className="w-4 h-4 mr-2" />
+                  
+                  <Button size="lg" className="w-full">
                     Send Message
                   </Button>
                 </form>
@@ -145,27 +131,24 @@ const Contact = () => {
 
             {/* Contact Information */}
             <div className="space-y-8">
-              {/* Contact Details */}
-              <div className="space-y-6">
-                <h3 className="text-2xl font-bold">Contact Information</h3>
-                {contactInfo.map((info, index) => (
-                  <Card key={index} className="hover:shadow-md transition-shadow duration-200">
+              {/* Contact Cards */}
+              <div className="space-y-4">
+                {contactInfo.map((contact, index) => (
+                  <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-4">
                         <div className="p-3 bg-primary/10 rounded-lg">
-                          <info.icon className="w-6 h-6 text-primary" />
+                          <contact.icon className="w-6 h-6 text-primary" />
                         </div>
                         <div>
-                          <h4 className="font-semibold mb-1">{info.title}</h4>
+                          <h3 className="font-semibold mb-1">{contact.title}</h3>
+                          <p className="text-muted-foreground mb-2">{contact.description}</p>
                           <a 
-                            href={info.href}
-                            className="text-primary hover:underline block mb-1"
+                            href={contact.href}
+                            className="text-primary hover:text-primary/80 transition-colors"
                           >
-                            {info.value}
+                            {contact.value}
                           </a>
-                          <p className="text-sm text-muted-foreground">
-                            {info.description}
-                          </p>
                         </div>
                       </div>
                     </CardContent>
@@ -174,47 +157,45 @@ const Contact = () => {
               </div>
 
               {/* Social Links */}
-              <div className="space-y-6">
-                <h3 className="text-2xl font-bold">Follow Me</h3>
-                <div className="grid gap-4">
-                  {socialLinks.map((social, index) => (
-                    <Card key={index} className="hover:shadow-md transition-shadow duration-200">
-                      <CardContent className="p-4">
-                        <a 
-                          href={social.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center space-x-4 hover:bg-muted/50 rounded-lg p-2 -m-2 transition-colors duration-200"
-                        >
-                          <div className="p-2 bg-primary/10 rounded-lg">
-                            <social.icon className="w-5 h-5 text-primary" />
-                          </div>
-                          <div>
-                            <h4 className="font-semibold">{social.name}</h4>
-                            <p className="text-sm text-muted-foreground">
-                              {social.description}
-                            </p>
-                          </div>
-                        </a>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </div>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Follow Me</CardTitle>
+                  <CardDescription>
+                    Connect with me on social media for updates and inspiration.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-1 gap-4">
+                    {socialLinks.map((social, index) => (
+                      <a
+                        key={index}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center space-x-3 p-3 rounded-lg hover:bg-muted/50 transition-colors"
+                      >
+                        <div className="p-2 bg-primary/10 rounded-lg">
+                          <social.icon className="w-5 h-5 text-primary" />
+                        </div>
+                        <div>
+                          <p className="font-medium">{social.name}</p>
+                          <p className="text-sm text-muted-foreground">{social.description}</p>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
 
-              {/* Availability Status */}
-              <Card className="bg-green-50 border-green-200 dark:bg-green-950 dark:border-green-800">
+              {/* Availability */}
+              <Card>
                 <CardContent className="p-6">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                    <div>
-                      <h4 className="font-semibold text-green-800 dark:text-green-200">
-                        Available for new projects
-                      </h4>
-                      <p className="text-sm text-green-600 dark:text-green-300">
-                        I'm currently accepting new freelance and full-time opportunities.
-                      </p>
-                    </div>
+                  <div className="text-center">
+                    <div className="w-3 h-3 bg-green-500 rounded-full mx-auto mb-3"></div>
+                    <h3 className="font-semibold mb-2">Available for Projects</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Currently accepting new design projects and collaborations.
+                    </p>
                   </div>
                 </CardContent>
               </Card>
