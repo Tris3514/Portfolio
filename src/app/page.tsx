@@ -303,7 +303,7 @@ export default function Home() {
                       </div>
                       <div className="flex space-x-2 mt-auto">
                         <Button variant="outline" className="flex-1" asChild>
-                          <a href="/website-templates">
+                          <a href="/Portfolio/website-templates">
                             <ExternalLink className="w-4 h-4 mr-2" />
                             View Gallery
                           </a>
