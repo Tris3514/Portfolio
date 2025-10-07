@@ -120,7 +120,7 @@ export default function UltrakillGalleryPage() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <Button variant="ghost" size="sm" asChild>
-                <Link href="/">
+                <Link href={`${process.env.NODE_ENV === 'production' ? '/Portfolio' : ''}/`}>
                   <ArrowLeft className="w-4 h-4 mr-2" />
                   Back to Portfolio
                 </Link>
@@ -253,7 +253,7 @@ export default function UltrakillGalleryPage() {
                 I&apos;m constantly working on new ULTRAKILL levels. Check back for updates!
               </p>
               <Button variant="outline" asChild>
-                <Link href="/">
+                <Link href={`${process.env.NODE_ENV === 'production' ? '/Portfolio' : ''}/`}>
                   Back to Portfolio
                 </Link>
               </Button>
@@ -271,7 +271,7 @@ export default function UltrakillGalleryPage() {
             </p>
             <div className="mt-4">
               <Button variant="outline" asChild>
-                <Link href="/">
+                <Link href={`${process.env.NODE_ENV === 'production' ? '/Portfolio' : ''}/`}>
                   <ArrowLeft className="w-4 h-4 mr-2" />
                   Return to Portfolio
                 </Link>
