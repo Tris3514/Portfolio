@@ -239,9 +239,11 @@ export default function Home() {
 
                 <Card className="group hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full">
                   <div className="aspect-video bg-muted relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                      <span className="text-muted-foreground">Project Image</span>
-                    </div>
+                    <img 
+                      src={`${process.env.NODE_ENV === 'production' ? '/Portfolio' : ''}/Previews/cannon1.png`}
+                      alt="Igaming Projects Preview"
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
                     <div className="absolute top-4 right-4 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <Button size="sm" variant="secondary" className="rounded-full">
                         <ExternalLink className="w-4 h-4" />
@@ -280,9 +282,11 @@ export default function Home() {
 
                 <Card className="group hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full">
                   <div className="aspect-video bg-muted relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                      <span className="text-muted-foreground">Project Image</span>
-                    </div>
+                    <img 
+                      src={`${process.env.NODE_ENV === 'production' ? '/Portfolio' : ''}/Previews/Willow.png`}
+                      alt="Website Templates Preview"
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
                     <div className="absolute top-4 right-4 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <Button size="sm" variant="secondary" className="rounded-full">
                         <ExternalLink className="w-4 h-4" />
@@ -338,23 +342,23 @@ export default function Home() {
                   </div>
                   <div className="flex flex-col flex-grow">
                     <CardHeader>
-                      <CardTitle>3D Art</CardTitle>
+                      <CardTitle>ULTRAKILL Levels</CardTitle>
                       <CardDescription>
-                        A collection of 3D artwork including character models, environmental designs, product visualizations, and digital sculptures.
+                        Custom levels made from scratch for the game ULTRAKILL
                       </CardDescription>
                     </CardHeader>
                     <CardContent className="flex flex-col flex-grow">
                       <div className="flex flex-wrap gap-2 mb-4">
-                        <Badge variant="secondary">Blender</Badge>
-                        <Badge variant="secondary">Maya</Badge>
+                        <Badge variant="secondary">Unity</Badge>
+                        <Badge variant="secondary">Level Design</Badge>
+                        <Badge variant="secondary">Game Development</Badge>
                         <Badge variant="secondary">3D Modeling</Badge>
                         <Badge variant="secondary">Texturing</Badge>
-                        <Badge variant="secondary">Rendering</Badge>
-                        <Badge variant="secondary">Animation</Badge>
+                        <Badge variant="secondary">Lighting</Badge>
                       </div>
                       <div className="flex space-x-2 mt-auto">
                         <Button variant="outline" className="flex-1" asChild>
-                          <a href="/Portfolio/3d-art-gallery-static/">
+                          <a href="/3d-art-gallery">
                             <ExternalLink className="w-4 h-4 mr-2" />
                             View Gallery
                           </a>
