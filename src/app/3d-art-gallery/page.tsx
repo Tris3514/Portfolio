@@ -151,7 +151,7 @@ export default function UltrakillGalleryPage() {
                  </Link>
                </Button>
               <div>
-                <h1 className="text-2xl font-bold text-foreground">ULTRAKILL Levels Gallery</h1>
+                <h1 className="text-2xl font-bold text-foreground">3D Art Showcase</h1>
                 <p className="text-muted-foreground">Custom levels made from scratch for the game ULTRAKILL</p>
               </div>
             </div>
@@ -159,8 +159,14 @@ export default function UltrakillGalleryPage() {
         </div>
       </div>
 
-      {/* Levels Grid */}
+      {/* ULTRAKILL Levels Section */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-4">ULTRAKILL Levels</h2>
+          <p className="text-muted-foreground max-w-3xl mx-auto">
+            Custom levels made from scratch for the game ULTRAKILL, showcasing level design and game development skills.
+          </p>
+        </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {ultrakillLevels.map((level, index) => (
             <Card key={level.id} className="group hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col h-full">
@@ -261,8 +267,14 @@ export default function UltrakillGalleryPage() {
           ))}
         </div>
 
-        {/* Add New Level Section */}
-        <div className="mt-12 text-center">
+        {/* Future Sections Placeholder */}
+        <div className="mt-16 text-center">
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold mb-4">More 3D Art Sections</h2>
+            <p className="text-muted-foreground max-w-3xl mx-auto">
+              Additional sections and content will be added here to showcase more of my 3D art and design work.
+            </p>
+          </div>
           <Card className="max-w-md mx-auto">
             <CardContent className="p-8">
               <div className="w-16 h-16 bg-muted rounded-lg flex items-center justify-center mx-auto mb-4">
@@ -270,9 +282,9 @@ export default function UltrakillGalleryPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold mb-2">More Levels Coming Soon</h3>
+              <h3 className="text-lg font-semibold mb-2">More Content Coming Soon</h3>
               <p className="text-sm text-muted-foreground mb-4">
-                I&apos;m constantly working on new ULTRAKILL levels. Check back for updates!
+                Stay tuned for additional 3D art sections and showcases.
               </p>
                <Button variant="outline" asChild>
                  <Link href="/">
