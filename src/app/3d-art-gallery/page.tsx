@@ -267,32 +267,54 @@ export default function UltrakillGalleryPage() {
           ))}
         </div>
 
-        {/* Future Sections Placeholder */}
-        <div className="mt-16 text-center">
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold mb-4">More 3D Art Sections</h2>
+        {/* 3D Artwork Section */}
+        <div className="mt-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">3D Artwork</h2>
             <p className="text-muted-foreground max-w-3xl mx-auto">
-              Additional sections and content will be added here to showcase more of my 3D art and design work.
+              A collection of 3D models, renders, and artistic creations showcasing various techniques and styles.
             </p>
           </div>
-          <Card className="max-w-md mx-auto">
-            <CardContent className="p-8">
-              <div className="w-16 h-16 bg-muted rounded-lg flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold mb-2">More Content Coming Soon</h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                Stay tuned for additional 3D art sections and showcases.
-              </p>
-               <Button variant="outline" asChild>
-                 <Link href="/">
-                   Back to Portfolio
-                 </Link>
-               </Button>
-            </CardContent>
-          </Card>
+          <div className="text-center">
+            <Card className="max-w-md mx-auto">
+              <CardContent className="p-8">
+                <div className="w-16 h-16 bg-muted rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-semibold mb-2">3D Artwork Coming Soon</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Stay tuned for a showcase of 3D models, renders, and artistic creations.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        {/* 3D Printing Section */}
+        <div className="mt-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">3D Printing</h2>
+            <p className="text-muted-foreground max-w-3xl mx-auto">
+              Physical 3D printed models and prototypes, bringing digital designs into the real world.
+            </p>
+          </div>
+          <div className="text-center">
+            <Card className="max-w-md mx-auto">
+              <CardContent className="p-8">
+                <div className="w-16 h-16 bg-muted rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-semibold mb-2">3D Printing Coming Soon</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Physical 3D printed models and prototypes will be showcased here.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
 

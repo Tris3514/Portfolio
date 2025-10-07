@@ -342,9 +342,9 @@ export default function Home() {
                   </div>
                   <div className="flex flex-col flex-grow">
                     <CardHeader>
-                      <CardTitle>ULTRAKILL Levels</CardTitle>
+                      <CardTitle>3D Art Gallery</CardTitle>
                       <CardDescription>
-                        Custom levels made from scratch for the game ULTRAKILL
+                        A showcase of 3D artwork, models, and custom game levels
                       </CardDescription>
                     </CardHeader>
                     <CardContent className="flex flex-col flex-grow">
