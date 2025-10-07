@@ -144,12 +144,12 @@ export default function UltrakillGalleryPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="sm" asChild>
-                <Link href={`${process.env.NODE_ENV === 'production' ? '/Portfolio' : ''}/`}>
-                  <ArrowLeft className="w-4 h-4 mr-2" />
-                  Back to Portfolio
-                </Link>
-              </Button>
+               <Button variant="ghost" size="sm" asChild>
+                 <Link href={process.env.NODE_ENV === 'production' ? '/Portfolio/' : '/'}>
+                   <ArrowLeft className="w-4 h-4 mr-2" />
+                   Back to Portfolio
+                 </Link>
+               </Button>
               <div>
                 <h1 className="text-2xl font-bold text-foreground">ULTRAKILL Levels Gallery</h1>
                 <p className="text-muted-foreground">Custom levels made from scratch for the game ULTRAKILL</p>
@@ -277,11 +277,11 @@ export default function UltrakillGalleryPage() {
               <p className="text-sm text-muted-foreground mb-4">
                 I&apos;m constantly working on new ULTRAKILL levels. Check back for updates!
               </p>
-              <Button variant="outline" asChild>
-                <Link href={`${process.env.NODE_ENV === 'production' ? '/Portfolio' : ''}/`}>
-                  Back to Portfolio
-                </Link>
-              </Button>
+               <Button variant="outline" asChild>
+                 <Link href={process.env.NODE_ENV === 'production' ? '/Portfolio/' : '/'}>
+                   Back to Portfolio
+                 </Link>
+               </Button>
             </CardContent>
           </Card>
         </div>
@@ -295,12 +295,12 @@ export default function UltrakillGalleryPage() {
               Custom ULTRAKILL levels showcasing level design and game development skills.
             </p>
             <div className="mt-4">
-              <Button variant="outline" asChild>
-                <Link href={`${process.env.NODE_ENV === 'production' ? '/Portfolio' : ''}/`}>
-                  <ArrowLeft className="w-4 h-4 mr-2" />
-                  Return to Portfolio
-                </Link>
-              </Button>
+               <Button variant="outline" asChild>
+                 <Link href={process.env.NODE_ENV === 'production' ? '/Portfolio/' : '/'}>
+                   <ArrowLeft className="w-4 h-4 mr-2" />
+                   Return to Portfolio
+                 </Link>
+               </Button>
             </div>
           </div>
         </div>
