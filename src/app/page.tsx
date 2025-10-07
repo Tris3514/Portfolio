@@ -197,7 +197,7 @@ export default function Home() {
                 <Card className="group hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full">
                   <div className="aspect-video bg-muted relative overflow-hidden">
                     <img 
-                      src="/Previews/LogosPreview.png" 
+                      src={`${process.env.NODE_ENV === 'production' ? '/Portfolio' : ''}/Previews/LogosPreview.png`}
                       alt="Corporate Logo Design Preview"
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
@@ -323,7 +323,7 @@ export default function Home() {
                 <Card className="group hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full">
                   <div className="aspect-video bg-muted relative overflow-hidden">
                     <img 
-                      src="/Previews/3DPreview.png" 
+                      src={`${process.env.NODE_ENV === 'production' ? '/Portfolio' : ''}/Previews/3DPreview.png`}
                       alt="3D Art Preview"
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
