@@ -145,7 +145,7 @@ export default function UltrakillGalleryPage() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
                <Button variant="ghost" size="sm" asChild>
-                 <Link href={process.env.NODE_ENV === 'production' ? '/Portfolio/' : '/'}>
+                 <Link href="/">
                    <ArrowLeft className="w-4 h-4 mr-2" />
                    Back to Portfolio
                  </Link>
@@ -155,9 +155,6 @@ export default function UltrakillGalleryPage() {
                 <p className="text-muted-foreground">Custom levels made from scratch for the game ULTRAKILL</p>
               </div>
             </div>
-            <Badge variant="secondary" className="text-sm">
-              {ultrakillLevels.length} Levels
-            </Badge>
           </div>
         </div>
       </div>
@@ -278,7 +275,7 @@ export default function UltrakillGalleryPage() {
                 I&apos;m constantly working on new ULTRAKILL levels. Check back for updates!
               </p>
                <Button variant="outline" asChild>
-                 <Link href={process.env.NODE_ENV === 'production' ? '/Portfolio/' : '/'}>
+                 <Link href="/">
                    Back to Portfolio
                  </Link>
                </Button>
@@ -296,7 +293,7 @@ export default function UltrakillGalleryPage() {
             </p>
             <div className="mt-4">
                <Button variant="outline" asChild>
-                 <Link href={process.env.NODE_ENV === 'production' ? '/Portfolio/' : '/'}>
+                 <Link href="/">
                    <ArrowLeft className="w-4 h-4 mr-2" />
                    Return to Portfolio
                  </Link>
