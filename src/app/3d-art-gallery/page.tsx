@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, X, Volume2, VolumeX } from "lucide-react"
+import { ArrowLeft, X, ChevronLeft, ChevronRight } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
@@ -113,21 +113,29 @@ const ultrakillLevels = [
 ]
 
 export default function UltrakillGalleryPage() {
-  const [selectedMedia, setSelectedMedia] = useState<{
-    src: string;
-    type: 'image' | 'video';
-    title: string;
-  } | null>(null);
-  const [isMuted, setIsMuted] = useState(true);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
-  const openModal = (media: string, type: 'image' | 'video', title: string) => {
-    setSelectedMedia({ src: media, type, title });
-    setIsMuted(true); // Start videos muted
+  const openModal = (index: number) => {
+    setSelectedIndex(index);
   };
 
   const closeModal = () => {
-    setSelectedMedia(null);
+    setSelectedIndex(null);
   };
+
+  const goToPrevious = () => {
+    if (selectedIndex !== null) {
+      setSelectedIndex(selectedIndex > 0 ? selectedIndex - 1 : ultrakillLevels.length - 1);
+    }
+  };
+
+  const goToNext = () => {
+    if (selectedIndex !== null) {
+      setSelectedIndex(selectedIndex < ultrakillLevels.length - 1 ? selectedIndex + 1 : 0);
+    }
+  };
+
+  const selectedLevel = selectedIndex !== null ? ultrakillLevels[selectedIndex] : null;
 
   return (
     <div className="min-h-screen bg-background">
@@ -157,12 +165,12 @@ export default function UltrakillGalleryPage() {
       {/* Levels Grid */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {ultrakillLevels.map((level) => (
+          {ultrakillLevels.map((level, index) => (
             <Card key={level.id} className="group hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col h-full">
               {/* Level Preview Media */}
               <div 
                 className="aspect-video bg-muted relative overflow-hidden cursor-pointer"
-                onClick={() => openModal(level.media, level.type as 'image' | 'video', level.name)}
+                onClick={() => openModal(index)}
               >
                 {level.type === "image" ? (
                   <Image 
@@ -299,7 +307,7 @@ export default function UltrakillGalleryPage() {
       </div>
 
       {/* Media Modal */}
-      {selectedMedia && (
+      {selectedLevel && (
         <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
           <div className="relative w-full h-full max-w-7xl max-h-full flex items-center justify-center">
             {/* Close Button */}
@@ -312,46 +320,53 @@ export default function UltrakillGalleryPage() {
               <X className="w-6 h-6" />
             </Button>
 
+            {/* Navigation Arrows */}
+            <Button
+              variant="ghost"
+              size="sm"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white"
+              onClick={goToPrevious}
+            >
+              <ChevronLeft className="w-8 h-8" />
+            </Button>
+            
+            <Button
+              variant="ghost"
+              size="sm"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white"
+              onClick={goToNext}
+            >
+              <ChevronRight className="w-8 h-8" />
+            </Button>
+
             {/* Media Content */}
             <div className="relative w-full h-full flex items-center justify-center">
-              {selectedMedia.type === "image" ? (
+              {selectedLevel.type === "image" ? (
                 <Image
-                  src={selectedMedia.src}
-                  alt={selectedMedia.title}
+                  src={selectedLevel.media}
+                  alt={selectedLevel.name}
                   width={1920}
                   height={1080}
                   className="max-w-full max-h-full object-contain"
                   priority
                 />
               ) : (
-                <div className="relative w-full h-full flex items-center justify-center">
-                  <video
-                    src={selectedMedia.src}
-                    className="max-w-full max-h-full object-contain"
-                    controls
-                    autoPlay
-                    muted={isMuted}
-                    loop
-                    playsInline
-                  />
-                  
-                  {/* Volume Control */}
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="absolute top-4 left-4 z-10 bg-black/50 hover:bg-black/70 text-white"
-                    onClick={() => setIsMuted(!isMuted)}
-                  >
-                    {isMuted ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
-                  </Button>
-                </div>
+                <video
+                  src={selectedLevel.media}
+                  className="max-w-full max-h-full object-contain"
+                  controls
+                  autoPlay
+                  muted={false}
+                  loop
+                  playsInline
+                />
               )}
             </div>
 
-            {/* Title Overlay */}
+            {/* Title and Counter Overlay */}
             <div className="absolute bottom-4 left-4 right-4 text-center">
               <h3 className="text-white text-xl font-semibold bg-black/50 px-4 py-2 rounded-lg">
-                {selectedMedia.title}
+                {selectedLevel.name} ({selectedIndex! + 1} of {ultrakillLevels.length})
               </h3>
             </div>
           </div>
