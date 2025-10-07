@@ -196,9 +196,11 @@ export default function Home() {
               <div className="grid md:grid-cols-2 gap-8 mb-16">
                 <Card className="group hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full">
                   <div className="aspect-video bg-muted relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                      <span className="text-muted-foreground">Project Image</span>
-                    </div>
+                    <img 
+                      src="/Previews/LogosPreview.png" 
+                      alt="Corporate Logo Design Preview"
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
                     <div className="absolute top-4 right-4 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <Button size="sm" variant="secondary" className="rounded-full">
                         <ExternalLink className="w-4 h-4" />
@@ -320,9 +322,11 @@ export default function Home() {
                 {/* Project 4: 3D Art */}
                 <Card className="group hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full">
                   <div className="aspect-video bg-muted relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                      <span className="text-muted-foreground">Project Image</span>
-                    </div>
+                    <img 
+                      src="/Previews/3DPreview.png" 
+                      alt="3D Art Preview"
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
                     <div className="absolute top-4 right-4 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <Button size="sm" variant="secondary" className="rounded-full">
                         <ExternalLink className="w-4 h-4" />
