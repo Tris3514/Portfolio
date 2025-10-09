@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowLeft, ExternalLink, Github, Play, Pause } from "lucide-react"
 import Link from "next/link"
@@ -63,7 +63,6 @@ const igamingAnimations = [
 function AnimationCard({ animation }: { animation: typeof igamingAnimations[0] }) {
   const [currentFrame, setCurrentFrame] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -81,13 +80,11 @@ function AnimationCard({ animation }: { animation: typeof igamingAnimations[0] }
 
   const handleMouseEnter = () => {
     if (animation.frames.length > 1) {
-      setIsHovered(true);
       setIsPlaying(true);
     }
   };
 
   const handleMouseLeave = () => {
-    setIsHovered(false);
     setIsPlaying(false);
     setCurrentFrame(0);
   };
@@ -225,7 +222,7 @@ export default function IgamingGalleryPage() {
               <h3 className="font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2 text-muted-foreground">
                 <li><button onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-foreground transition-colors">Gallery</button></li>
-                <li><a href="/" className="hover:text-foreground transition-colors">Portfolio</a></li>
+                <li><Link href="/" className="hover:text-foreground transition-colors">Portfolio</Link></li>
                 <li><a href="/gallery/" className="hover:text-foreground transition-colors">Logo Gallery</a></li>
                 <li><a href="/3d-art-gallery/" className="hover:text-foreground transition-colors">3D Art Gallery</a></li>
               </ul>
