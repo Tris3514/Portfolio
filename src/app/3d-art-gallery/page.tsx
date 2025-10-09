@@ -210,9 +210,9 @@ export default function UltrakillGalleryPage() {
 
         {/* ULTRAKILL Levels Section */}
         <div id="ultrakill-levels" className="px-8 py-8">
-          <div className="text-right mb-12">
+          <div className="text-left mb-12">
             <h2 className="text-3xl font-bold mb-4">ULTRAKILL Levels</h2>
-            <p className="text-muted-foreground max-w-3xl ml-auto">
+            <p className="text-muted-foreground max-w-3xl">
               3D models, environments, and digital art created with modern tools, showcasing 3D modeling and design skills.
             </p>
           </div>
@@ -318,13 +318,13 @@ export default function UltrakillGalleryPage() {
 
         {/* 3D Artwork Section */}
         <div id="3d-artwork" className="px-8 py-8">
-          <div className="text-right mb-12">
+          <div className="text-left mb-12">
             <h2 className="text-3xl font-bold mb-4">3D Artwork</h2>
-            <p className="text-muted-foreground max-w-3xl ml-auto">
+            <p className="text-muted-foreground max-w-3xl">
               A collection of 3D models, renders, and artistic creations showcasing various techniques and styles.
             </p>
           </div>
-          <div className="flex justify-end">
+          <div className="flex justify-start">
             <Card className="max-w-md">
               <CardContent className="p-8">
                 <div className="w-16 h-16 bg-muted rounded-lg flex items-center justify-center mx-auto mb-4">
@@ -343,13 +343,13 @@ export default function UltrakillGalleryPage() {
 
         {/* 3D Printing Section */}
         <div id="3d-printing" className="px-8 py-8">
-          <div className="text-right mb-12">
+          <div className="text-left mb-12">
             <h2 className="text-3xl font-bold mb-4">3D Printing</h2>
-            <p className="text-muted-foreground max-w-3xl ml-auto">
+            <p className="text-muted-foreground max-w-3xl">
               Physical 3D printed models and prototypes, bringing digital designs into the real world.
             </p>
           </div>
-          <div className="flex justify-end">
+          <div className="flex justify-start">
             <Card className="max-w-md">
               <CardContent className="p-8">
                 <div className="w-16 h-16 bg-muted rounded-lg flex items-center justify-center mx-auto mb-4">
