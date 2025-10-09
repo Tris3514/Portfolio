@@ -63,6 +63,7 @@ const igamingAnimations = [
 function AnimationCard({ animation }: { animation: typeof igamingAnimations[0] }) {
   const [currentFrame, setCurrentFrame] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -74,22 +75,21 @@ function AnimationCard({ animation }: { animation: typeof igamingAnimations[0] }
     return () => clearInterval(interval);
   }, [isPlaying, animation.frames.length]);
 
+  // Reset image loaded state when frame changes
+  useEffect(() => {
+    setImageLoaded(false);
+  }, [currentFrame]);
+
   const toggleAnimation = () => {
     setIsPlaying(!isPlaying);
   };
 
   const handleMouseEnter = () => {
-    if (animation.frames.length > 1) {
-      setIsPlaying(true);
-    }
+    // No auto-play on hover
   };
 
   const handleMouseLeave = () => {
-    setIsPlaying(false);
-    // Reset to first frame after a short delay to avoid flicker
-    setTimeout(() => {
-      setCurrentFrame(0);
-    }, 50);
+    // No auto-stop on mouse leave
   };
 
   return (
@@ -100,18 +100,24 @@ function AnimationCard({ animation }: { animation: typeof igamingAnimations[0] }
     >
       <CardContent className="p-4">
         <div className="aspect-square bg-muted rounded-lg flex items-center justify-center p-2 group-hover:bg-muted/80 transition-colors relative" style={{backgroundColor: '#000000'}}>
+          {!imageLoaded && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-white text-sm">Loading...</div>
+            </div>
+          )}
           <Image
-            key={`${animation.id}-frame-${currentFrame}`}
             src={`${process.env.NODE_ENV === 'production' ? '/Portfolio' : ''}${animation.basePath}${animation.frames[currentFrame]}`}
             alt={`${animation.name} - Frame ${currentFrame + 1}`}
             width={400}
             height={400}
-            className="max-w-full max-h-full object-contain transition-opacity duration-100"
+            className={`max-w-full max-h-full object-contain ${imageLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200`}
             unoptimized
             onError={(e) => {
               console.error('Image failed to load:', e.currentTarget.src);
+              setImageLoaded(true); // Show error state
             }}
             onLoad={() => {
+              setImageLoaded(true);
               console.log('Image loaded successfully:', `${process.env.NODE_ENV === 'production' ? '/Portfolio' : ''}${animation.basePath}${animation.frames[currentFrame]}`);
             }}
           />
