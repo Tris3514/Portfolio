@@ -147,6 +147,64 @@ const artwork3D = [
   }
 ];
 
+// 3D Printing data
+const printing3D = [
+  {
+    id: "3dp1",
+    name: "3D Print 1",
+    description: "Physical 3D printed model showcasing real-world fabrication",
+    category: "3D Printing",
+    tags: ["3D Printing", "Prototype", "Physical Model"],
+    media: `${process.env.NODE_ENV === 'production' ? '/Portfolio' : ''}/3d-art-gallery-static/3dp1.png`,
+    type: "image"
+  },
+  {
+    id: "3dp2",
+    name: "3D Print 2",
+    description: "Physical 3D printed model showcasing real-world fabrication",
+    category: "3D Printing",
+    tags: ["3D Printing", "Prototype", "Physical Model"],
+    media: `${process.env.NODE_ENV === 'production' ? '/Portfolio' : ''}/3d-art-gallery-static/3dp2.png`,
+    type: "image"
+  },
+  {
+    id: "3dp3",
+    name: "3D Print 3",
+    description: "Physical 3D printed model showcasing real-world fabrication",
+    category: "3D Printing",
+    tags: ["3D Printing", "Prototype", "Physical Model"],
+    media: `${process.env.NODE_ENV === 'production' ? '/Portfolio' : ''}/3d-art-gallery-static/3dp3.png`,
+    type: "image"
+  },
+  {
+    id: "3dp4",
+    name: "3D Print 4",
+    description: "Physical 3D printed model showcasing real-world fabrication",
+    category: "3D Printing",
+    tags: ["3D Printing", "Prototype", "Physical Model"],
+    media: `${process.env.NODE_ENV === 'production' ? '/Portfolio' : ''}/3d-art-gallery-static/3dp4.png`,
+    type: "image"
+  },
+  {
+    id: "3dp5",
+    name: "3D Print 5",
+    description: "Physical 3D printed model showcasing real-world fabrication",
+    category: "3D Printing",
+    tags: ["3D Printing", "Prototype", "Physical Model"],
+    media: `${process.env.NODE_ENV === 'production' ? '/Portfolio' : ''}/3d-art-gallery-static/3dp5.png`,
+    type: "image"
+  },
+  {
+    id: "3dp6",
+    name: "3D Print 6",
+    description: "Physical 3D printed model showcasing real-world fabrication",
+    category: "3D Printing",
+    tags: ["3D Printing", "Prototype", "Physical Model"],
+    media: `${process.env.NODE_ENV === 'production' ? '/Portfolio' : ''}/3d-art-gallery-static/3dp6.png`,
+    type: "image"
+  }
+];
+
 // ULTRAKILL Level data - using actual files from the directory
 const ultrakillLevels = [
   {
@@ -253,9 +311,9 @@ const ultrakillLevels = [
 
 export default function UltrakillGalleryPage() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const [selectedType, setSelectedType] = useState<'ultrakill' | '3d-art' | null>(null);
+  const [selectedType, setSelectedType] = useState<'ultrakill' | '3d-art' | '3d-printing' | null>(null);
 
-  const openModal = (index: number, type: 'ultrakill' | '3d-art') => {
+  const openModal = (index: number, type: 'ultrakill' | '3d-art' | '3d-printing') => {
     setSelectedIndex(index);
     setSelectedType(type);
   };
@@ -285,25 +343,35 @@ export default function UltrakillGalleryPage() {
 
   const goToPrevious = () => {
     if (selectedIndex !== null && selectedType !== null) {
-      const currentArray = selectedType === 'ultrakill' ? ultrakillLevels : artwork3D;
+      const currentArray = getCurrentArray();
       setSelectedIndex(selectedIndex > 0 ? selectedIndex - 1 : currentArray.length - 1);
     }
   };
 
   const goToNext = () => {
     if (selectedIndex !== null && selectedType !== null) {
-      const currentArray = selectedType === 'ultrakill' ? ultrakillLevels : artwork3D;
+      const currentArray = getCurrentArray();
       setSelectedIndex(selectedIndex < currentArray.length - 1 ? selectedIndex + 1 : 0);
     }
   };
 
   const getSelectedItem = () => {
     if (selectedIndex === null || selectedType === null) return null;
-    return selectedType === 'ultrakill' ? ultrakillLevels[selectedIndex] : artwork3D[selectedIndex];
+    const currentArray = getCurrentArray();
+    return currentArray[selectedIndex];
   };
 
   const getCurrentArray = () => {
-    return selectedType === 'ultrakill' ? ultrakillLevels : artwork3D;
+    switch (selectedType) {
+      case 'ultrakill':
+        return ultrakillLevels;
+      case '3d-art':
+        return artwork3D;
+      case '3d-printing':
+        return printing3D;
+      default:
+        return [];
+    }
   };
 
   const selectedItem = getSelectedItem();
@@ -547,20 +615,65 @@ export default function UltrakillGalleryPage() {
               Physical 3D printed models and prototypes, bringing digital designs into the real world.
             </p>
           </div>
-          <div className="flex justify-start">
-            <Card className="max-w-md">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-muted rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                  </svg>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {printing3D.map((print, index) => (
+              <Card key={print.id} className="group hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col h-full">
+                {/* Print Preview Media */}
+                <div 
+                  className="aspect-video bg-muted relative overflow-hidden cursor-pointer"
+                  onClick={() => openModal(index, '3d-printing')}
+                >
+                  <Image 
+                    src={print.media} 
+                    alt={`${print.name} preview`}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    onError={(e) => {
+                      // Fallback to placeholder if image fails to load
+                      e.currentTarget.style.display = 'none';
+                      const nextElement = e.currentTarget.nextElementSibling as HTMLElement;
+                      if (nextElement) {
+                        nextElement.style.display = 'flex';
+                      }
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-muted flex items-center justify-center" style={{display: 'none'}}>
+                    <svg className="w-12 h-12 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                  </div>
                 </div>
-                <h3 className="text-lg font-semibold mb-2">3D Printing Coming Soon</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Physical 3D printed models and prototypes will be showcased here.
-                </p>
-              </CardContent>
-            </Card>
+                
+                <CardContent className="p-4 flex-1 flex flex-col">
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between mb-2">
+                      <Badge variant="secondary" className="text-xs">
+                        {print.category}
+                      </Badge>
+                    </div>
+                    <h3 className="font-semibold text-sm mb-2 line-clamp-2">
+                      {print.name}
+                    </h3>
+                    <p className="text-xs text-muted-foreground mb-3 line-clamp-2">
+                      {print.description}
+                    </p>
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-1">
+                    {print.tags.slice(0, 3).map((tag) => (
+                      <Badge key={tag} variant="outline" className="text-xs px-2 py-0">
+                        {tag}
+                      </Badge>
+                    ))}
+                    {print.tags.length > 3 && (
+                      <Badge variant="outline" className="text-xs px-2 py-0">
+                        +{print.tags.length - 3}
+                      </Badge>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </div>
