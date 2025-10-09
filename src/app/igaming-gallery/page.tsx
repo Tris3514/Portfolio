@@ -139,10 +139,10 @@ function AnimationCard({ animation }: { animation: typeof igamingAnimations[0] }
 
 export default function IgamingGalleryPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background text-foreground" style={{backgroundColor: '#000000', color: '#ffffff'}}>
       <main>
         {/* Header */}
-        <div className="border-b border-border bg-card">
+        <div className="border-b border-border bg-card" style={{backgroundColor: '#1a1a1a', borderColor: '#333333'}}>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
@@ -185,7 +185,7 @@ export default function IgamingGalleryPage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-muted/50 border-t border-border">
+            <footer className="bg-muted/50 border-t border-border" style={{backgroundColor: '#1a1a1a', borderColor: '#333333'}}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
