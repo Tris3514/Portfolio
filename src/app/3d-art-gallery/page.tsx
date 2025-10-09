@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { ArrowLeft, X, ChevronLeft, ChevronRight } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 // ULTRAKILL Level data - using actual files from the directory
 const ultrakillLevels = [
@@ -119,6 +119,24 @@ export default function UltrakillGalleryPage() {
     setSelectedIndex(index);
   };
 
+  // Smooth scrolling for navigation links
+  useEffect(() => {
+    const handleSmoothScroll = (e: Event) => {
+      const target = e.target as HTMLAnchorElement;
+      if (target.tagName === 'A' && target.getAttribute('href')?.startsWith('#')) {
+        e.preventDefault();
+        const targetId = target.getAttribute('href')?.substring(1);
+        const targetElement = document.getElementById(targetId || '');
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    };
+
+    document.addEventListener('click', handleSmoothScroll);
+    return () => document.removeEventListener('click', handleSmoothScroll);
+  }, []);
+
   const closeModal = () => {
     setSelectedIndex(null);
   };
@@ -138,35 +156,66 @@ export default function UltrakillGalleryPage() {
   const selectedLevel = selectedIndex !== null ? ultrakillLevels[selectedIndex] : null;
 
   return (
-    <div className="min-h-screen">
-      {/* Header */}
-      <div className="border-b border-border bg-card">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-               <Button variant="ghost" size="sm" asChild>
-                 <Link href="/">
-                   <ArrowLeft className="w-4 h-4 mr-2" />
-                   Back to Portfolio
-                 </Link>
-               </Button>
-              <div>
-                <h1 className="text-2xl font-bold text-foreground">3D Art Showcase</h1>
-                <p className="text-muted-foreground">3D models, environments, and digital art created with modern tools</p>
-              </div>
-            </div>
+    <div className="min-h-screen flex">
+      {/* Sidebar Navigation */}
+      <div className="w-64 bg-card border-r border-border flex-shrink-0 sticky top-0 h-screen overflow-y-auto">
+        <div className="p-6">
+          <div className="mb-8">
+            <Button variant="ghost" size="sm" asChild className="mb-4">
+              <Link href="/">
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back to Portfolio
+              </Link>
+            </Button>
+            <h1 className="text-xl font-bold text-foreground">3D Art Showcase</h1>
+            <p className="text-sm text-muted-foreground mt-2">
+              3D models, environments, and digital art created with modern tools
+            </p>
           </div>
+          
+          <nav className="space-y-2">
+            <a 
+              href="#ultrakill-levels" 
+              className="block px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted rounded-md transition-colors"
+            >
+              ULTRAKILL Levels
+            </a>
+            <a 
+              href="#3d-artwork" 
+              className="block px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted rounded-md transition-colors"
+            >
+              3D Artwork
+            </a>
+            <a 
+              href="#3d-printing" 
+              className="block px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted rounded-md transition-colors"
+            >
+              3D Printing
+            </a>
+          </nav>
         </div>
       </div>
 
-      {/* ULTRAKILL Levels Section */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">ULTRAKILL Levels</h2>
-          <p className="text-muted-foreground max-w-3xl mx-auto">
-            3D models, environments, and digital art created with modern tools, showcasing 3D modeling and design skills.
-          </p>
+      {/* Main Content */}
+      <div className="flex-1">
+        {/* Header */}
+        <div className="border-b border-border bg-card">
+          <div className="px-8 py-6">
+            <h1 className="text-3xl font-bold text-foreground">3D Art Showcase</h1>
+            <p className="text-muted-foreground mt-2">
+              3D models, environments, and digital art created with modern tools
+            </p>
+          </div>
         </div>
+
+        {/* ULTRAKILL Levels Section */}
+        <div id="ultrakill-levels" className="px-8 py-8">
+          <div className="text-right mb-12">
+            <h2 className="text-3xl font-bold mb-4">ULTRAKILL Levels</h2>
+            <p className="text-muted-foreground max-w-3xl ml-auto">
+              3D models, environments, and digital art created with modern tools, showcasing 3D modeling and design skills.
+            </p>
+          </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {ultrakillLevels.map((level, index) => (
             <Card key={level.id} className="group hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col h-full">
@@ -268,15 +317,15 @@ export default function UltrakillGalleryPage() {
         </div>
 
         {/* 3D Artwork Section */}
-        <div className="mt-16">
-          <div className="text-center mb-12">
+        <div id="3d-artwork" className="px-8 py-8">
+          <div className="text-right mb-12">
             <h2 className="text-3xl font-bold mb-4">3D Artwork</h2>
-            <p className="text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-muted-foreground max-w-3xl ml-auto">
               A collection of 3D models, renders, and artistic creations showcasing various techniques and styles.
             </p>
           </div>
-          <div className="text-center">
-            <Card className="max-w-md mx-auto">
+          <div className="flex justify-end">
+            <Card className="max-w-md">
               <CardContent className="p-8">
                 <div className="w-16 h-16 bg-muted rounded-lg flex items-center justify-center mx-auto mb-4">
                   <svg className="w-8 h-8 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -293,15 +342,15 @@ export default function UltrakillGalleryPage() {
         </div>
 
         {/* 3D Printing Section */}
-        <div className="mt-16">
-          <div className="text-center mb-12">
+        <div id="3d-printing" className="px-8 py-8">
+          <div className="text-right mb-12">
             <h2 className="text-3xl font-bold mb-4">3D Printing</h2>
-            <p className="text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-muted-foreground max-w-3xl ml-auto">
               Physical 3D printed models and prototypes, bringing digital designs into the real world.
             </p>
           </div>
-          <div className="text-center">
-            <Card className="max-w-md mx-auto">
+          <div className="flex justify-end">
+            <Card className="max-w-md">
               <CardContent className="p-8">
                 <div className="w-16 h-16 bg-muted rounded-lg flex items-center justify-center mx-auto mb-4">
                   <svg className="w-8 h-8 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -320,10 +369,10 @@ export default function UltrakillGalleryPage() {
 
       {/* Footer */}
       <div className="border-t border-border bg-card mt-12">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="px-8 py-6">
           <div className="text-center">
             <p className="text-muted-foreground text-sm">
-              Custom ULTRAKILL levels showcasing level design and game development skills.
+              3D models, environments, and digital art created with modern tools.
             </p>
             <div className="mt-4">
                <Button variant="outline" asChild>
@@ -335,6 +384,7 @@ export default function UltrakillGalleryPage() {
             </div>
           </div>
         </div>
+      </div>
       </div>
 
       {/* Media Modal */}
