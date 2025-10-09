@@ -79,7 +79,7 @@
 }
 
 .dark {
-  --background: oklch(0.08 0.05 300);
+  --background: oklch(0.0 0.0 0);
   --foreground: oklch(0.95 0.02 300);
   --card: oklch(0.12 0.05 300);
   --card-foreground: oklch(0.95 0.02 300);
@@ -133,6 +133,7 @@
   }
 
   .diagonal-crosses-dark {
+    background-color: #000000;
     background-image: 
       linear-gradient(45deg, transparent 25%, rgba(255, 255, 255, 0.1) 25%),
       linear-gradient(-45deg, transparent 25%, rgba(255, 255, 255, 0.1) 25%),
@@ -151,6 +152,7 @@
   }
 
   .plus-grid-animation-dark {
+    background-color: #000000;
     background-image: 
       linear-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
