@@ -31,7 +31,7 @@ export default function IgamingGalleryPage() {
     <div className="min-h-screen">
       <main>
         {/* Hero Section */}
-        <section id="home" className="min-h-screen flex items-center justify-center diagonal-crosses-dark relative">
+        <section id="home" className="min-h-screen flex items-center justify-center diagonal-crosses-dark relative" style={{backgroundColor: '#1a1a1a'}}>
           <div className="absolute inset-0 overflow-hidden pointer-events-none w-full h-full">
             <div className="plus-grid-animation-dark w-full h-full"></div>
           </div>
