@@ -69,7 +69,7 @@ function AnimationCard({ animation }: { animation: typeof igamingAnimations[0] }
     if (isPlaying && animation.frames.length > 1) {
       interval = setInterval(() => {
         setCurrentFrame((prev) => (prev + 1) % animation.frames.length);
-      }, 200); // 200ms per frame for smooth animation
+      }, 150); // 150ms per frame for smoother animation
     }
     return () => clearInterval(interval);
   }, [isPlaying, animation.frames.length]);
@@ -86,7 +86,10 @@ function AnimationCard({ animation }: { animation: typeof igamingAnimations[0] }
 
   const handleMouseLeave = () => {
     setIsPlaying(false);
-    setCurrentFrame(0);
+    // Reset to first frame after a short delay to avoid flicker
+    setTimeout(() => {
+      setCurrentFrame(0);
+    }, 50);
   };
 
   return (
@@ -98,11 +101,12 @@ function AnimationCard({ animation }: { animation: typeof igamingAnimations[0] }
       <CardContent className="p-4">
         <div className="aspect-square bg-muted rounded-lg flex items-center justify-center p-2 group-hover:bg-muted/80 transition-colors relative" style={{backgroundColor: '#000000'}}>
           <Image
+            key={`${animation.id}-frame-${currentFrame}`}
             src={`${process.env.NODE_ENV === 'production' ? '/Portfolio' : ''}${animation.basePath}${animation.frames[currentFrame]}`}
             alt={`${animation.name} - Frame ${currentFrame + 1}`}
             width={400}
             height={400}
-            className="max-w-full max-h-full object-contain"
+            className="max-w-full max-h-full object-contain transition-opacity duration-100"
             unoptimized
             onError={(e) => {
               console.error('Image failed to load:', e.currentTarget.src);
