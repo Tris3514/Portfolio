@@ -152,7 +152,7 @@ export default function UltrakillGalleryPage() {
                </Button>
               <div>
                 <h1 className="text-2xl font-bold text-foreground">3D Art Showcase</h1>
-                <p className="text-muted-foreground">Custom levels made from scratch for the game ULTRAKILL</p>
+                <p className="text-muted-foreground">3D models, environments, and digital art created with modern tools</p>
               </div>
             </div>
           </div>
@@ -164,7 +164,7 @@ export default function UltrakillGalleryPage() {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">ULTRAKILL Levels</h2>
           <p className="text-muted-foreground max-w-3xl mx-auto">
-            Custom levels made from scratch for the game ULTRAKILL, showcasing level design and game development skills.
+            3D models, environments, and digital art created with modern tools, showcasing 3D modeling and design skills.
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
