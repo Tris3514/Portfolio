@@ -23,7 +23,7 @@ export default function Home() {
                 Tris Giles
               </h1>
               <h2 className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground mb-8">
-                Graphic Designer & Multimedia Artist
+                Graphic Designer - Multimedia Artist - Logo Designer
               </h2>
               <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
                 I create compelling visual stories through graphic design and multimedia art. Passionate about innovative design, creative storytelling, and bringing ideas to life.
