@@ -28,7 +28,7 @@ const igamingAssets = {
 
 export default function IgamingGalleryPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen dark">
       <main>
         {/* Hero Section */}
         <section id="home" className="min-h-screen flex items-center justify-center diagonal-crosses-dark relative">
@@ -85,7 +85,7 @@ export default function IgamingGalleryPage() {
         </section>
 
         {/* Gallery Section */}
-        <section id="gallery" className="py-20">
+        <section id="gallery" className="py-20 bg-background">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-16">
