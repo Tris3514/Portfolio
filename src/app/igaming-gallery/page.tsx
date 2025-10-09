@@ -17,9 +17,9 @@ const igamingAnimations = [
     category: "3D Animation",
     tags: ["3D Modeling", "Animation", "Game Assets"],
     frames: [
-    "barrel1.png", "barrel2.png", "barrel3.png", "barrel4.png",
-    "barrel5.png", "barrel6.png", "barrel7.png", "barrel8.png"
-  ],
+      "barrel1.png", "barrel2.png", "barrel3.png", "barrel4.png",
+      "barrel5.png", "barrel6.png", "barrel7.png", "barrel8.png"
+    ],
     basePath: "/igaming-gallery/barrel/"
   },
   {
@@ -29,9 +29,9 @@ const igamingAnimations = [
     category: "3D Animation",
     tags: ["3D Modeling", "Animation", "Game Assets"],
     frames: [
-    "cannon1.png", "cannon2.png", "cannon3.png", "cannon4.png",
-    "cannon5.png", "cannon6.png", "cannon7.png", "cannon8.png"
-  ],
+      "cannon1.png", "cannon2.png", "cannon3.png", "cannon4.png",
+      "cannon5.png", "cannon6.png", "cannon7.png", "cannon8.png"
+    ],
     basePath: "/igaming-gallery/cannon/"
   },
   {
@@ -41,9 +41,9 @@ const igamingAnimations = [
     category: "3D Animation",
     tags: ["3D Modeling", "Animation", "Game Assets"],
     frames: [
-    "pistol1.png", "pistol2.png", "pistol3.png", "pistol4.png",
-    "pistol5.png", "pistol6.png", "pistol7.png", "pistol8.png"
-  ],
+      "pistol1.png", "pistol2.png", "pistol3.png", "pistol4.png",
+      "pistol5.png", "pistol6.png", "pistol7.png", "pistol8.png"
+    ],
     basePath: "/igaming-gallery/pistol/"
   },
   {
@@ -53,7 +53,7 @@ const igamingAnimations = [
     category: "UI Design",
     tags: ["UI Design", "Symbols", "Game Assets"],
     frames: [
-    "BF-Symbol-Hook-Full.png"
+      "BF-Symbol-Hook-Full.png"
     ],
     basePath: "/igaming-gallery/hook/"
   }
@@ -103,8 +103,8 @@ function AnimationCard({ animation }: { animation: typeof igamingAnimations[0] }
           <Image
             src={`${animation.basePath}${animation.frames[currentFrame]}`}
             alt={`${animation.name} - Frame ${currentFrame + 1}`}
-            width={120}
-            height={120}
+            width={200}
+            height={200}
             className="max-w-full max-h-full object-contain"
             unoptimized
           />
@@ -144,59 +144,25 @@ export default function IgamingGalleryPage() {
   return (
     <div className="min-h-screen">
       <main>
-        {/* Hero Section */}
-        <section id="home" className="min-h-screen flex items-center justify-center diagonal-crosses-dark relative">
-          <div className="absolute inset-0 overflow-hidden pointer-events-none w-full h-full">
-            <div className="plus-grid-animation-dark w-full h-full"></div>
-          </div>
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <div className="max-w-4xl mx-auto">
-              <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 mb-6 text-sm">
-                🎮 iGaming Projects
-              </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                iGaming Assets Gallery
-              </h1>
-              <h2 className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground mb-8">
-                3D Assets & Designs for the Gaming Industry
-              </h2>
-              <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
-                A collection of work spanning multiple formats and platforms for the igaming industry, featuring game assets, UI elements, and promotional materials.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-                <Button 
-                  size="lg" 
-                  className="text-lg px-8 py-6"
-                  onClick={() => {
-                    document.getElementById('gallery')?.scrollIntoView({ 
-                      behavior: 'smooth' 
-                    });
-                  }}
-                >
-                  View Gallery
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg" 
-                  className="text-lg px-8 py-6"
-                  asChild
-                >
+        {/* Header */}
+        <div className="border-b border-border bg-card">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-4">
+                <Button variant="ghost" size="sm" asChild>
                   <Link href="/">
+                    <ArrowLeft className="w-4 h-4 mr-2" />
                     Back to Portfolio
                   </Link>
                 </Button>
-              </div>
-              <div className="flex justify-center space-x-6 mb-12">
-                <Button variant="ghost" size="icon" className="rounded-full">
-                  <Github className="h-5 w-5" />
-                </Button>
-                <Button variant="ghost" size="icon" className="rounded-full">
-                  <ExternalLink className="h-5 w-5" />
-                </Button>
+                <div>
+                  <h1 className="text-2xl font-bold text-foreground">iGaming Animations</h1>
+                  <p className="text-muted-foreground">Interactive 3D animations for the gaming industry</p>
+                </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
 
         {/* Gallery Section */}
         <section id="gallery" className="py-20">
@@ -210,8 +176,8 @@ export default function IgamingGalleryPage() {
                 </p>
               </div>
 
-              {/* Animation Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {/* Animation Grid - 2 columns */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {igamingAnimations.map((animation) => (
                   <AnimationCard key={animation.id} animation={animation} />
                 ))}
@@ -229,7 +195,7 @@ export default function IgamingGalleryPage() {
               <button 
                 className="text-2xl font-bold text-primary mb-4 block text-left"
                 onClick={() => {
-                  document.getElementById('home')?.scrollIntoView({ 
+                  document.getElementById('gallery')?.scrollIntoView({ 
                     behavior: 'smooth' 
                   });
                 }}
@@ -237,16 +203,19 @@ export default function IgamingGalleryPage() {
                 Tris Giles
               </button>
               <p className="text-muted-foreground mb-6 max-w-md">
-                Graphic Designer & Multimedia Artist creating compelling visual stories through innovative design and creative multimedia experiences.
+                Graphic Designer & Multimedia Artist creating compelling visual stories through innovative design and creative storytelling.
               </p>
               <div className="flex space-x-4">
-                <Button variant="ghost" size="icon" asChild>
-                  <a href="https://github.com/johndoe" target="_blank" rel="noopener noreferrer">
-                    <Github className="h-5 w-5" />
+                <Button variant="ghost" size="icon" className="rounded-full">
+                  <Github className="h-5 w-5" />
+                </Button>
+                <Button variant="ghost" size="icon" className="rounded-full" asChild>
+                  <a href="https://www.linkedin.com/in/tristian-giles-83a68337b" target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="h-5 w-5" />
                   </a>
                 </Button>
-                <Button variant="ghost" size="icon" asChild>
-                  <a href="https://www.linkedin.com/in/tristian-giles-83a68337b" target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="icon" className="rounded-full" asChild>
+                  <a href="mailto:tristiancgiles@gmail.com">
                     <ExternalLink className="h-5 w-5" />
                   </a>
                 </Button>
@@ -254,38 +223,11 @@ export default function IgamingGalleryPage() {
             </div>
             <div>
               <h3 className="font-semibold mb-4">Quick Links</h3>
-              <ul className="space-y-2">
-                <li>
-                  <button 
-                    className="text-muted-foreground hover:text-primary transition-colors duration-200"
-                    onClick={() => {
-                      document.getElementById('home')?.scrollIntoView({ 
-                        behavior: 'smooth' 
-                      });
-                    }}
-                  >
-                    Home
-                  </button>
-                </li>
-                <li>
-                  <button 
-                    className="text-muted-foreground hover:text-primary transition-colors duration-200"
-                    onClick={() => {
-                      document.getElementById('gallery')?.scrollIntoView({ 
-                        behavior: 'smooth' 
-                      });
-                    }}
-                  >
-                    Gallery
-                  </button>
-                </li>
-                <li>
-                  <Button variant="ghost" asChild>
-                    <Link href="/">
-                      Portfolio
-                    </Link>
-                  </Button>
-                </li>
+              <ul className="space-y-2 text-muted-foreground">
+                <li><button onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-foreground transition-colors">Gallery</button></li>
+                <li><a href="/" className="hover:text-foreground transition-colors">Portfolio</a></li>
+                <li><a href="/gallery/" className="hover:text-foreground transition-colors">Logo Gallery</a></li>
+                <li><a href="/3d-art-gallery/" className="hover:text-foreground transition-colors">3D Art Gallery</a></li>
               </ul>
             </div>
             <div>
