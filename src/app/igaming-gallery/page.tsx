@@ -96,12 +96,12 @@ function AnimationCard({ animation }: { animation: typeof igamingAnimations[0] }
       onMouseLeave={handleMouseLeave}
     >
       <CardContent className="p-4">
-        <div className="aspect-square bg-muted rounded-lg flex items-center justify-center p-2 group-hover:bg-muted/80 transition-colors relative" style={{backgroundColor: '#2a2a2a'}}>
+        <div className="aspect-square bg-muted rounded-lg flex items-center justify-center p-2 group-hover:bg-muted/80 transition-colors relative" style={{backgroundColor: '#000000'}}>
           <Image
             src={`${process.env.NODE_ENV === 'production' ? '/Portfolio' : ''}${animation.basePath}${animation.frames[currentFrame]}`}
             alt={`${animation.name} - Frame ${currentFrame + 1}`}
-            width={200}
-            height={200}
+            width={400}
+            height={400}
             className="max-w-full max-h-full object-contain"
             unoptimized
             onError={(e) => {
