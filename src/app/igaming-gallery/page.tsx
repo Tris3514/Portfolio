@@ -3,27 +3,141 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, ExternalLink, Github } from "lucide-react"
+import { ArrowLeft, ExternalLink, Github, Play, Pause } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { useState, useEffect } from "react"
 
-// Define the igaming assets
-const igamingAssets = {
-  barrel: [
+// Define the igaming animation assets
+const igamingAnimations = [
+  {
+    id: "barrel",
+    name: "Barrel Animation",
+    description: "3D barrel animation frames for gaming environments",
+    category: "3D Animation",
+    tags: ["3D Modeling", "Animation", "Game Assets"],
+    frames: [
     "barrel1.png", "barrel2.png", "barrel3.png", "barrel4.png",
     "barrel5.png", "barrel6.png", "barrel7.png", "barrel8.png"
   ],
-  cannon: [
+    basePath: "/igaming-gallery/barrel/"
+  },
+  {
+    id: "cannon",
+    name: "Cannon Animation",
+    description: "3D cannon animation frames for gaming environments",
+    category: "3D Animation",
+    tags: ["3D Modeling", "Animation", "Game Assets"],
+    frames: [
     "cannon1.png", "cannon2.png", "cannon3.png", "cannon4.png",
     "cannon5.png", "cannon6.png", "cannon7.png", "cannon8.png"
   ],
-  pistol: [
+    basePath: "/igaming-gallery/cannon/"
+  },
+  {
+    id: "pistol",
+    name: "Pistol Animation",
+    description: "3D pistol animation frames for gaming environments",
+    category: "3D Animation",
+    tags: ["3D Modeling", "Animation", "Game Assets"],
+    frames: [
     "pistol1.png", "pistol2.png", "pistol3.png", "pistol4.png",
     "pistol5.png", "pistol6.png", "pistol7.png", "pistol8.png"
   ],
-  hook: [
+    basePath: "/igaming-gallery/pistol/"
+  },
+  {
+    id: "hook",
+    name: "Hook Symbol",
+    description: "Hook symbol design for gaming interfaces",
+    category: "UI Design",
+    tags: ["UI Design", "Symbols", "Game Assets"],
+    frames: [
     "BF-Symbol-Hook-Full.png"
-  ]
+    ],
+    basePath: "/igaming-gallery/hook/"
+  }
+]
+
+// Animation component for individual items
+function AnimationCard({ animation }: { animation: typeof igamingAnimations[0] }) {
+  const [currentFrame, setCurrentFrame] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (isPlaying && animation.frames.length > 1) {
+      interval = setInterval(() => {
+        setCurrentFrame((prev) => (prev + 1) % animation.frames.length);
+      }, 200); // 200ms per frame for smooth animation
+    }
+    return () => clearInterval(interval);
+  }, [isPlaying, animation.frames.length]);
+
+  const toggleAnimation = () => {
+    setIsPlaying(!isPlaying);
+  };
+
+  const handleMouseEnter = () => {
+    if (animation.frames.length > 1) {
+      setIsHovered(true);
+      setIsPlaying(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setIsPlaying(false);
+    setCurrentFrame(0);
+  };
+
+  return (
+    <Card 
+      className="group hover:shadow-lg transition-all duration-300 overflow-hidden"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <CardContent className="p-4">
+        <div className="aspect-square bg-muted rounded-lg flex items-center justify-center p-2 group-hover:bg-muted/80 transition-colors relative">
+          <Image
+            src={`${animation.basePath}${animation.frames[currentFrame]}`}
+            alt={`${animation.name} - Frame ${currentFrame + 1}`}
+            width={120}
+            height={120}
+            className="max-w-full max-h-full object-contain"
+            unoptimized
+          />
+          {animation.frames.length > 1 && (
+            <div className="absolute top-2 right-2">
+              <Button
+                size="sm"
+                variant="secondary"
+                onClick={toggleAnimation}
+                className="h-8 w-8 p-0"
+              >
+                {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+              </Button>
+            </div>
+          )}
+        </div>
+        <div className="mt-3">
+          <h4 className="font-semibold text-sm mb-1">{animation.name}</h4>
+          <p className="text-xs text-muted-foreground mb-2">{animation.description}</p>
+          <div className="flex flex-wrap gap-1">
+            <Badge variant="secondary" className="text-xs">
+              {animation.category}
+            </Badge>
+            {animation.frames.length > 1 && (
+              <Badge variant="outline" className="text-xs">
+                {animation.frames.length} Frames
+              </Badge>
+            )}
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
 }
 
 export default function IgamingGalleryPage() {
@@ -89,127 +203,18 @@ export default function IgamingGalleryPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-16">
-                <Badge variant="outline" className="mb-4">iGaming Assets</Badge>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">3D Game Assets</h2>
+                <Badge variant="outline" className="mb-4">iGaming Animations</Badge>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">Interactive 3D Animations</h2>
                 <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                  A collection of 3D assets and designs created for the igaming industry, featuring weapons, props, and interface elements.
+                  Frame-by-frame animations for the igaming industry. Hover over items to see animations in action.
                 </p>
               </div>
 
-              {/* Barrel Section */}
-              <div className="mb-16">
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold mb-4">Barrel Assets</h3>
-                  <p className="text-muted-foreground">3D barrel models and textures for gaming environments</p>
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                  {igamingAssets.barrel.map((imageName, index) => (
-                    <Card key={index} className="group hover:shadow-lg transition-all duration-300 overflow-hidden">
-                      <CardContent className="p-4">
-                        <div className="aspect-square bg-muted rounded-lg flex items-center justify-center p-2 group-hover:bg-muted/80 transition-colors">
-                          <Image
-                            src={`/igaming-gallery/barrel/${imageName}`}
-                            alt={`Barrel ${index + 1}`}
-                            width={120}
-                            height={120}
-                            className="max-w-full max-h-full object-contain"
-                            unoptimized
-                          />
-                        </div>
-                        <p className="text-xs text-muted-foreground mt-2 text-center">
-                          Barrel {index + 1}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </div>
-
-              {/* Cannon Section */}
-              <div className="mb-16">
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold mb-4">Cannon Assets</h3>
-                  <p className="text-muted-foreground">3D cannon models and textures for gaming environments</p>
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                  {igamingAssets.cannon.map((imageName, index) => (
-                    <Card key={index} className="group hover:shadow-lg transition-all duration-300 overflow-hidden">
-                      <CardContent className="p-4">
-                        <div className="aspect-square bg-muted rounded-lg flex items-center justify-center p-2 group-hover:bg-muted/80 transition-colors">
-                          <Image
-                            src={`/igaming-gallery/cannon/${imageName}`}
-                            alt={`Cannon ${index + 1}`}
-                            width={120}
-                            height={120}
-                            className="max-w-full max-h-full object-contain"
-                            unoptimized
-                          />
-                        </div>
-                        <p className="text-xs text-muted-foreground mt-2 text-center">
-                          Cannon {index + 1}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </div>
-
-              {/* Pistol Section */}
-              <div className="mb-16">
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold mb-4">Pistol Assets</h3>
-                  <p className="text-muted-foreground">3D pistol models and textures for gaming environments</p>
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                  {igamingAssets.pistol.map((imageName, index) => (
-                    <Card key={index} className="group hover:shadow-lg transition-all duration-300 overflow-hidden">
-                      <CardContent className="p-4">
-                        <div className="aspect-square bg-muted rounded-lg flex items-center justify-center p-2 group-hover:bg-muted/80 transition-colors">
-                          <Image
-                            src={`/igaming-gallery/pistol/${imageName}`}
-                            alt={`Pistol ${index + 1}`}
-                            width={120}
-                            height={120}
-                            className="max-w-full max-h-full object-contain"
-                            unoptimized
-                          />
-                        </div>
-                        <p className="text-xs text-muted-foreground mt-2 text-center">
-                          Pistol {index + 1}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </div>
-
-              {/* Hook Section */}
-              <div className="mb-16">
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold mb-4">Hook Symbols</h3>
-                  <p className="text-muted-foreground">Hook symbol designs for gaming interfaces</p>
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                  {igamingAssets.hook.map((imageName, index) => (
-                    <Card key={index} className="group hover:shadow-lg transition-all duration-300 overflow-hidden">
-                      <CardContent className="p-4">
-                        <div className="aspect-square bg-muted rounded-lg flex items-center justify-center p-2 group-hover:bg-muted/80 transition-colors">
-                          <Image
-                            src={`/igaming-gallery/hook/${imageName}`}
-                            alt="Hook Symbol"
-                            width={120}
-                            height={120}
-                            className="max-w-full max-h-full object-contain"
-                            unoptimized
-                          />
-                        </div>
-                        <p className="text-xs text-muted-foreground mt-2 text-center">
-                          Hook Symbol
-                        </p>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
+              {/* Animation Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {igamingAnimations.map((animation) => (
+                  <AnimationCard key={animation.id} animation={animation} />
+                ))}
               </div>
             </div>
           </div>
@@ -286,7 +291,7 @@ export default function IgamingGalleryPage() {
             <div>
               <h3 className="font-semibold mb-4">Gallery Info</h3>
               <div className="space-y-2 text-muted-foreground">
-                <p>{Object.values(igamingAssets).flat().length} Assets</p>
+                <p>{igamingAnimations.length} Animations</p>
                 <p>3D Modeling</p>
                 <p>Game Design</p>
               </div>
